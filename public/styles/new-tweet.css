@@ -23,3 +23,7 @@ footer {
   border: none;
   border-bottom: 4px solid #545149;
 }
+
+.over-limit {
+  color: red;
+}
