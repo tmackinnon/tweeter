@@ -7,7 +7,6 @@ $(document).ready(function() {
     const charLimit = (MAX_CHARS - length);
 
     counter.val(charLimit); //assigns html content to 
-    console.log(charLimit)
 
     // if statements on whether is above or below zero to update colour
     if (charLimit < 0) {
@@ -18,4 +17,4 @@ $(document).ready(function() {
   });
 });
 
-//Q: does it make sense 
+//Note: $(.counter) can also be found by $(this).siblings('footer').children('output') 
