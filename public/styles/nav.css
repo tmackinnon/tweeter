@@ -1,0 +1,29 @@
+nav {
+  height: 120px;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%
+}
+
+.title {
+  font-family: 'Bungee', sans-serif;
+  font-size: 36px;
+ }
+
+.writeAction {
+  font-weight: 600;
+ }
+
+#newTweet {
+  background-color: transparent;
+  border: none;
+  color: #FFFFFF;
+}
