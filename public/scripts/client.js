@@ -75,4 +75,27 @@ $(() => {
   
   renderTweets(tweetData);
 
+  //new tweets:
+  //grab new tweet form from DOM 
+  const $form = $('#new-tweet-form')
+  //submit event handler for new tweets
+  $form.on('submit', (event) => {
+    event.preventDefault(); //so page doesn't refresh
+
+    //create a text string in standard URL-encoded notation
+    const urlEncoded = $form.serialize();
+
+    //ajax request to send to backend
+    $.ajax({
+      method: 'POST',
+      url: '/tweets',
+      data: urlEncoded
+    }).then((response) => {
+      console.log(response);
+    })
+
+  });
+
+
 });
+
