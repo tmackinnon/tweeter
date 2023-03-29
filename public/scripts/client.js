@@ -4,32 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = [
-  {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Penny Lane",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@Band-aid"
-      },
-    "content": {
-        "text": "It's all happening"
-      },
-    "created_at": 1461116232227
-    },
-]
-
 //jQuery's doc.ready function
 $(() => {
 
@@ -63,6 +37,9 @@ $(() => {
   const renderTweets = function(tweets) {
     //takes in array of tweet objects - appends each tweet to tweet-container 
 
+    // clear out tweetcontainer before prepending all the tweets so it goes to initial state
+    $('#tweet-container').empty();
+
     // loops through tweets
     for (const tweet of tweets) {
       // calls createTweetElement for each tweet
@@ -72,28 +49,39 @@ $(() => {
     }
 
   }
-  
-  renderTweets(tweetData);
 
-  //new tweets:
+  const loadTweets = function() {
+    //responsible for fetching tweets from the /tweets page
+    //make a request to /tweets and receive the array of tweets as JSON
+    $.ajax({
+      method: 'GET',
+      url: '/tweets'
+    }).then((tweets) => {
+      renderTweets(tweets);
+    })
+  }
+
+  //INITIAL STATE//
+  //Load the tweets on the initial load
+  loadTweets();
+  
+  //NEW TWEETS//
   //grab new tweet form from DOM 
   const $form = $('#new-tweet-form')
   //submit event handler for new tweets
   $form.on('submit', (event) => {
     event.preventDefault(); //so page doesn't refresh
-
     //create a text string in standard URL-encoded notation
     const urlEncoded = $form.serialize();
-
-    //ajax request to send to backend
+    //ajax request to send tweet to backend
     $.ajax({
       method: 'POST',
       url: '/tweets',
       data: urlEncoded
-    }).then((response) => {
-      console.log(response);
+    }).then(() => {
+      loadTweets(); //reload all the tweets so it includes the new one now
     })
-
+    
   });
 
 
