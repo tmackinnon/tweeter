@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-footer {
+.new-tweet footer {
   display: flex;
   justify-content: space-between;
   font-family: 'Bungee', sans-serif;
