@@ -8,6 +8,10 @@
   border: 3px solid #545149;
 }
 
+.all-tweets article:hover {
+  box-shadow: 3px 3px 2px #5e7ab5f1;
+}
+
 .all-tweets article header{
   display: flex;
   justify-content: space-between;
@@ -47,4 +51,9 @@
 
 .fa-solid {
   margin: 3px;
+  color: #4056A1;
+}
+
+.fa-solid:hover {
+  color:#b39245;
 }
