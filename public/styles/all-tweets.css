@@ -20,7 +20,11 @@ article.tweet header{
   padding-right: 1%;
 }
 
-article.tweet .tweet-body {
+article.tweet header .name {
+  margin-left: 5px;
+}
+
+article.tweet .content {
   border-bottom:4px solid #545149;
   padding-bottom: 3%;
   margin-bottom: 1%;
