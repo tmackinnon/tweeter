@@ -5,7 +5,8 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
+const tweetData = [
+  {
   "user": {
     "name": "Newton",
     "avatars": "https://i.imgur.com/73hZDYK.png",
@@ -15,43 +16,63 @@ const tweetData = {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
   "created_at": 1461116232227
-}
+  },
+  {
+    "user": {
+      "name": "Penny Lane",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "handle": "@Band-aid"
+      },
+    "content": {
+        "text": "It's all happening"
+      },
+    "created_at": 1461116232227
+    },
+]
 
-//returns a tweet <article> element containing the entire HTML structure of the tweet.
-const createTweetElement = function(obj) {
-  const name = obj.user.name;
-  const avatar = obj.user.avatars;
-  const handle = obj.user.handle;
-  const content = obj.content.text;
+//jQuery's doc.ready function
+$(() => {
 
-  let $tweet =  $(`
-  <article class="tweet">
-    <header>
-      <div class="profile">
-        <img src="${avatar}">
-        <span class="name">${name}</span>
+  const createTweetElement = function(tweet) {
+    //takes in tweet obj 
+    //returns <article> element containing the entire HTML structure of tweet
+    let $tweet =  $(`
+    <article class="tweet">
+      <header>
+        <div class="profile">
+          <img src="${tweet.user.avatars}">
+          <span class="name">${tweet.user.name}</span>
+        </div>
+        <span class="handle">${tweet.user.handle}</span>
+      </header>
+      <div class="content">
+        <p>${tweet.content.text}</p>
       </div>
-      <span class="handle">${handle}</span>
-    </header>
-    <div class="content">
-      <p>${content}</p>
-    </div>
-    <footer>${obj.created_at}
-      <span>
-        <i class="fa-solid fa-flag"></i>
-        <i class="fa-solid fa-retweet"></i>
-        <i class="fa-solid fa-heart"></i>
-      </span>
-    </footer>
-  </article>
-  `);
-  return $tweet;
-}
+      <footer>${tweet.created_at}
+        <span>
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </span>
+      </footer>
+    </article>
+    `);
+    return $tweet;
+  }
 
-const $tweet = createTweetElement(tweetData);
+  const renderTweets = function(tweets) {
+    //takes in array of tweet objects - appends each tweet to tweet-container 
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$(document).ready(function() {
-  $('.all-tweets').append($tweet); // to add it to the page so we can make sure it's got all the right elements
+    // loops through tweets
+    for (const tweet of tweets) {
+      // calls createTweetElement for each tweet
+      let $tweet = createTweetElement(tweet);
+      // takes return value and prepends it to the tweets container
+      $('#tweet-container').prepend($tweet);
+    }
+
+  }
+  
+  renderTweets(tweetData);
+
 });
