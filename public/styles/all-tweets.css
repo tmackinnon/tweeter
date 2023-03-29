@@ -1,18 +1,18 @@
-.all-tweets {
+#tweet-container {
   margin-top: 3vh;
 }
 
-article.tweet {
+#tweet-container article {
   margin-top: 3vh;
   padding: 2%;
   border: 3px solid #545149;
 }
 
-article.tweet:hover {
+#tweet-container article:hover {
   box-shadow: 3px 3px 2px #5e7ab5f1;
 }
 
-article.tweet header{
+#tweet-container header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,22 +20,22 @@ article.tweet header{
   padding-right: 1%;
 }
 
-article.tweet header .name {
+#tweet-container header .name {
   margin-left: 5px;
 }
 
-article.tweet .content {
+#tweet-container .content {
   border-bottom:4px solid #545149;
   padding-bottom: 3%;
   margin-bottom: 1%;
+  font-weight: bold;
 }
 
-article.tweet p {
-  font-weight: bold;
+#tweet-container p {
   padding-left: 1%;
 }
 
-article.tweet footer {
+#tweet-container footer {
   font-size: small;
   padding-left: 1%;
   padding-right: 1%;
@@ -43,21 +43,21 @@ article.tweet footer {
   justify-content: space-between;
 }
 
-.profile {
+#tweet-container .profile {
   display: flex;
   align-items: center;
 }
 
-.handle {
+#tweet-container .handle {
   font-weight: 600;
   color:#5e7ab539;
 }
 
-.fa-solid {
+#tweet-container .fa-solid {
   margin: 3px;
   color: #4056A1;
 }
 
-.fa-solid:hover {
+#tweet-container .fa-solid:hover {
   color:#b39245;
 }
