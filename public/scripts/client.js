@@ -4,11 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
 //jQuery's doc.ready function
 $(() => {
 
   const createTweetElement = function(tweet) {
     //takes in tweet obj 
+
+    const timestamp = timeago.format(tweet.created_at);
+
     //returns <article> element containing the entire HTML structure of tweet
     let $tweet =  $(`
     <article class="tweet">
@@ -22,7 +26,7 @@ $(() => {
       <div class="content">
         <p>${tweet.content.text}</p>
       </div>
-      <footer>${tweet.created_at}
+      <footer>${timestamp}
         <span>
           <i class="fa-solid fa-flag"></i>
           <i class="fa-solid fa-retweet"></i>
