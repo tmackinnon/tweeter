@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#tweet-text').on('input', function(){
     const MAX_CHARS = 140;
-    const counter = $('.counter');
+    const counter = $(this).siblings('footer').children('output');
 
     const length = $(this).val().length; //gives character length
     const charLimit = (MAX_CHARS - length);
@@ -16,5 +16,3 @@ $(document).ready(function() {
     }
   });
 });
-
-//Note: $(.counter) can also be found by $(this).siblings('footer').children('output') 
