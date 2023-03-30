@@ -96,7 +96,7 @@ $(() => {
       return $('#no-content').slideDown();
     }
     if ($tweetText.val().length > 140) {
-      return $('#no-content').slideDown();
+      return $('#exceeds-limit').slideDown();
     }
     //create a text string in standard URL-encoded notation
     const urlEncoded = $form.serialize();

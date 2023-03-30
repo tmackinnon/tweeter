@@ -2,11 +2,28 @@
   display: flex;
   width: 100%;
   padding-top: 120px;
-  height: 520px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e4f3fa;
+  background-color: #c0dce9;
   background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
-  margin-bottom: 5%;
+  margin-bottom: 5vh;
+}
+
+.page-header img {
+  width: 200px;
+  height: 200px;
+}
+
+/*for larger window size */
+@media only screen and (min-width: 768px)  {
+  .page-header {
+    margin-top: 180px;
+    margin-left: 4vw;
+    margin-right: 2vw;
+    padding: 0;
+    height: 350px;
+    max-width: 350px;
+    width: 50%;
+  }
 }
