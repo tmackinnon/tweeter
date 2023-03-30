@@ -8,13 +8,19 @@
 //jQuery's doc.ready function
 $(() => {
 
-  const createTweetElement = function(tweet) {
-    //takes in tweet obj 
+  //to prevent XSS:
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
+  const createTweetElement = function(tweet) {
     const timestamp = timeago.format(tweet.created_at);
+    const secureTextContent = escape(tweet.content.text);
 
     //returns <article> element containing the entire HTML structure of tweet
-    let $tweet =  $(`
+    const $tweet =  $(`
     <article class="tweet">
       <header>
         <div class="profile">
@@ -24,7 +30,7 @@ $(() => {
         <span class="handle">${tweet.user.handle}</span>
       </header>
       <div class="content">
-        <p>${tweet.content.text}</p>
+        <p>${secureTextContent}</p>
       </div>
       <footer>${timestamp}
         <span>
@@ -36,6 +42,7 @@ $(() => {
     </article>
     `);
     return $tweet;
+
   }
 
   const renderTweets = function(tweets) {
@@ -72,11 +79,23 @@ $(() => {
   //NEW TWEETS//
   //grab new tweet form from DOM 
   const $form = $('#new-tweet-form')
+  const $tweetText = $('#tweet-text');
+
   //submit event handler for new tweets
   $form.on('submit', (event) => {
     event.preventDefault(); //so page doesn't refresh
+    console.log($tweetText.val())
+    //check if tweet text is blank
+    if (!$tweetText.val()) {
+      return alert('Error: there is nothing in your tweet!');
+    }
+    if ($tweetText.val().length > 140) {
+      return alert('Error: tweet exceeds character length!')
+    }
+    
     //create a text string in standard URL-encoded notation
     const urlEncoded = $form.serialize();
+
     //ajax request to send tweet to backend
     $.ajax({
       method: 'POST',
@@ -84,10 +103,11 @@ $(() => {
       data: urlEncoded
     }).then(() => {
       loadTweets(); //reload all the tweets so it includes the new one now
+      $tweetText.val(''); //reset input to be blank
+      $('.counter').val(140); //reset character counter to 140
     })
     
   });
-
 
 });
 
