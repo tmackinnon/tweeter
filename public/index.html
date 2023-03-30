@@ -51,7 +51,16 @@
 
       <!-- New Tweets -->
       <section class="new-tweet">
-
+        <div id="exceeds-limit" class="error-message">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Error: Tweet exceeds character limit</span>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div id="no-content" class="error-message">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+         <span>No content entered, please add text to post your tweet</span>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
         <form id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

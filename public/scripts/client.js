@@ -6,6 +6,7 @@
 
 
 //jQuery's doc.ready function
+
 $(() => {
 
   //to prevent XSS:
@@ -17,7 +18,7 @@ $(() => {
 
   const createTweetElement = function(tweet) {
     const timestamp = timeago.format(tweet.created_at);
-    const secureTextContent = escape(tweet.content.text);
+    const secureTweetContent = escape(tweet.content.text);
 
     //returns <article> element containing the entire HTML structure of tweet
     const $tweet =  $(`
@@ -30,7 +31,7 @@ $(() => {
         <span class="handle">${tweet.user.handle}</span>
       </header>
       <div class="content">
-        <p>${secureTextContent}</p>
+        <p>${secureTweetContent}</p>
       </div>
       <footer>${timestamp}
         <span>
@@ -73,6 +74,10 @@ $(() => {
   }
 
   //INITIAL STATE//
+  $('.error-message').hide();
+  
+  // $('.error-message').siblings('#no-content').hide();
+  // $('#id').show();
   //Load the tweets on the initial load
   loadTweets();
   
@@ -80,19 +85,19 @@ $(() => {
   //grab new tweet form from DOM 
   const $form = $('#new-tweet-form')
   const $tweetText = $('#tweet-text');
-
   //submit event handler for new tweets
   $form.on('submit', (event) => {
     event.preventDefault(); //so page doesn't refresh
-    console.log($tweetText.val())
+
+    $('.error-message').slideUp();
+    
     //check if tweet text is blank
     if (!$tweetText.val()) {
-      return alert('Error: there is nothing in your tweet!');
+      return $('#no-content').slideDown();
     }
     if ($tweetText.val().length > 140) {
-      return alert('Error: tweet exceeds character length!')
+      return $('#no-content').slideDown();
     }
-    
     //create a text string in standard URL-encoded notation
     const urlEncoded = $form.serialize();
 

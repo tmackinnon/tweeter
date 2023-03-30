@@ -27,3 +27,14 @@
 .over-limit {
   color: red;
 }
+
+.error-message {
+  color: #e20303;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid;
+  border-radius: 6px;
+  padding: 4%;
+  margin-bottom: 4%;
+}
