@@ -4,6 +4,10 @@
   margin-bottom: 8%;
 }
 
+.error-message-hidden {
+  display: none;
+}
+
 .error-message {
   color: #e20303;
   display: flex;
@@ -13,6 +17,7 @@
   border-radius: 6px;
   padding: 4%;
   margin-bottom: 4%;
+  text-align: center;
 }
 
 .new-tweet footer {

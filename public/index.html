@@ -3,6 +3,8 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -51,14 +53,9 @@
 
       <!-- New Tweets -->
       <section class="new-tweet">
-        <div id="exceeds-limit" class="error-message">
+        <div id="error-message-box" class="error-message-hidden">
           <i class="fa-solid fa-triangle-exclamation"></i>
-          <span>Error: Tweet exceeds character limit</span>
-          <i class="fa-solid fa-triangle-exclamation"></i>
-        </div>
-        <div id="no-content" class="error-message">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-         <span>No content entered, please add text to post your tweet</span>
+          <span id="error-text"></span>
           <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
         <form id="new-tweet-form">

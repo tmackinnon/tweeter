@@ -4,13 +4,11 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-//jQuery's doc.ready function
-
 $(() => {
 
-  //to prevent XSS:
+  //HELPER FUNCTIONS//
   const escape = function (str) {
+    //to prevent XSS
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -74,10 +72,6 @@ $(() => {
   }
 
   //INITIAL STATE//
-  $('.error-message').hide();
-  
-  // $('.error-message').siblings('#no-content').hide();
-  // $('#id').show();
   //Load the tweets on the initial load
   loadTweets();
   
@@ -89,15 +83,20 @@ $(() => {
   $form.on('submit', (event) => {
     event.preventDefault(); //so page doesn't refresh
 
-    $('.error-message').slideUp();
+    $('#error-message-box').slideUp("slow");
     
     //check if tweet text is blank
     if (!$tweetText.val()) {
-      return $('#no-content').slideDown();
+      $('#error-message-box').addClass('error-message');
+      $('#error-text').html('No content entered, please add text to post your tweet');
+      $('#error-message-box').slideDown("slow");
     }
     if ($tweetText.val().length > 140) {
-      return $('#exceeds-limit').slideDown();
+      $('#error-message-box').addClass('error-message');
+      $('#error-text').html('Error: Tweet exceeds character limit');
+      $('#error-message-box').slideDown("slow");
     }
+
     //create a text string in standard URL-encoded notation
     const urlEncoded = $form.serialize();
 
