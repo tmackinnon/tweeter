@@ -31,6 +31,7 @@
   background-color: #4056A1;
   color: #FFFFFF;
   border: none;
+  cursor: pointer;
 }
 
 #tweet-text {
@@ -41,6 +42,7 @@
   border-bottom: 4px solid #545149;
   resize: none;
   height: 60px;
+  cursor: text;
 }
 
 .over-limit {

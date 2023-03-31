@@ -15,6 +15,7 @@
   height: 150px;
 }
 
+
 /*for smallest window size */
 @media only screen and (max-width: 335px) {
   .page-header img {
@@ -33,5 +34,9 @@
     height: 350px;
     max-width: 350px;
     width: 50%;
+  }
+
+  #fullName {
+    font-size: 1.5rem;
   }
 }
