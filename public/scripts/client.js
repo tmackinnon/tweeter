@@ -69,9 +69,20 @@ $(() => {
     });
   };
 
+  const displayError = function(message) {
+    //to display error message add message and css styling
+    $('#error-text').html(message);
+    return $('#error-message-box').slideDown("slow");
+  };
+  
   //INITIAL STATE//
   //Load the tweets on the initial page load
   loadTweets();
+
+  //Slide up any previous error messages
+  $('#tweet-text').on('click', () => {
+    return $('#error-message-box').slideUp("slow");
+  });
 
   //NEW TWEETS//
   //grab new tweet form from DOM 
@@ -82,20 +93,13 @@ $(() => {
     //prevent page from refreshing
     event.preventDefault();
 
-    //slide up any previous error messages
-    $('#error-message-box').slideUp("slow");
-
     //Error Messages//
     if (!$tweetText.val()) {
-      $('#error-message-box').addClass('error-message');
-      $('#error-text').html('No content entered, please add text to post your tweet');
-      $('#error-message-box').slideDown("slow");
+      displayError('No content entered, please add text to post your tweet');
       return;
     }
     if ($tweetText.val().length > 140) {
-      $('#error-message-box').addClass('error-message');
-      $('#error-text').html('Error: Tweet exceeds character limit');
-      $('#error-message-box').slideDown("slow");
+      displayError('Error: Tweet exceeds character limit');
       return;
     }
 
@@ -111,7 +115,9 @@ $(() => {
       loadTweets(); //reload all the tweets so it includes the new one now
       $tweetText.val(''); //reset input to be blank
       $('.counter').val(140); //reset character counter to 140
-    });
+    }).catch((error) => {
+      
+    })
 
   });
 
