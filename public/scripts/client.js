@@ -74,7 +74,7 @@ $(() => {
     $('#error-text').html(message);
     return $('#error-message-box').slideDown("slow");
   };
-  
+
   //INITIAL STATE//
   //Load the tweets on the initial page load
   loadTweets();
@@ -115,9 +115,7 @@ $(() => {
       loadTweets(); //reload all the tweets so it includes the new one now
       $tweetText.val(''); //reset input to be blank
       $('.counter').val(140); //reset character counter to 140
-    }).catch((error) => {
-      
-    })
+    });
 
   });
 
