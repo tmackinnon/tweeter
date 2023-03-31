@@ -17,9 +17,7 @@ html {
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
-  min-width: 300px;
 }
 
 /*
@@ -31,6 +29,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
+  max-width: 1000px;
  }
 
  /*for larger window size */
