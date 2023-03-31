@@ -6,7 +6,7 @@ $(document).ready(function() {
     const length = $(this).val().length; //gives character length
     const charLimit = (MAX_CHARS - length);
 
-    counter.val(charLimit); //assigns html content to 
+    counter.val(charLimit); //assigns html content
 
     // if statements on whether is above or below zero to update colour
     if (charLimit < 0) {
